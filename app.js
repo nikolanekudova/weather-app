@@ -14,7 +14,11 @@ getBrnoData();
 
 async function getWeatherAPI(url) {
     try {
+        displayLoading();
+
         const response = await fetch(url, { mode: "cors" });
+
+        hideLoading();
 
         if (!response.ok) return null;
 
@@ -36,7 +40,12 @@ async function getPositionAPI(city) {
         "&limit=1&appid=3a34280f1b1a64c644af7807824fed30";
 
     try {
+        displayLoading();
+
+        await sleep(500);
         const response = await fetch(url, { mode: "cors" });
+
+        hideLoading();
 
         if (!response.ok) return null;
 
@@ -71,8 +80,31 @@ function positionOfCityIntoURL(positionData) {
     return cityURL;
 }
 
+function displayLoading() {
+    const loader = document.getElementById("loader");
+
+    loader.style.display = "block";
+}
+
+function hideLoading() {
+    const loader = document.getElementById("loader");
+
+    loader.style.display = "none";
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function main() {
     const city = getCustomCity();
+
+    if (city == "") {
+        alert("Please enter city.");
+
+        return;
+    }
+
     const positionData = await getPositionAPI(city);
     const cityURL = positionOfCityIntoURL(positionData);
     const weatherData = await getWeatherAPI(cityURL);
@@ -111,6 +143,10 @@ async function mainForGeolocation() {
 function showDataInPage(weatherData) {
     const cityName = getCustomCity();
     const cityNameUpperCase = cityName.toUpperCase();
+    const temperature = weatherData.main.temp;
+    const temperatureRounded = Math.round(temperature * 10) / 10;
+    const feelsLike = weatherData.main.feels_like;
+    const feelsLikeRounded = Math.round(feelsLike * 10) / 10;
 
     const cityNameDiv = document.getElementById("city");
     const weatherDiv = document.getElementById("current-weather-text");
@@ -127,8 +163,8 @@ function showDataInPage(weatherData) {
     }
 
     weatherDiv.innerHTML = weatherData.weather[0].description.toUpperCase();
-    temperatureDiv.innerHTML = weatherData.main.temp;
-    feelsLikeDiv.innerHTML = `Feels like: ${weatherData.main.feels_like} °C`;
+    temperatureDiv.innerHTML = temperatureRounded;
+    feelsLikeDiv.innerHTML = `Feels like: ${feelsLikeRounded} °C`;
     humidityDiv.innerHTML = `Humidity: ${weatherData.main.humidity} %`;
     cloudCoverDiv.innerHTML = `Cloud cover: ${weatherData.clouds.all} %`;
     windSpeedDiv.innerHTML = "Wind speed: " + weatherData.wind.speed + " km/h";
@@ -156,6 +192,10 @@ async function getBrnoData() {
     const positionData = await getPositionAPI(city);
     const cityURL = positionOfCityIntoURL(positionData);
     const weatherData = await getWeatherAPI(cityURL);
+    const temperature = weatherData.main.temp;
+    const temperatureRounded = Math.round(temperature * 10) / 10;
+    const feelsLike = weatherData.main.feels_like;
+    const feelsLikeRounded = Math.round(feelsLike * 10) / 10;
 
     //show in page
     const cityNameUpperCase = city.toUpperCase();
@@ -169,8 +209,8 @@ async function getBrnoData() {
 
     cityNameDiv.innerHTML = cityNameUpperCase;
     weatherDiv.innerHTML = weatherData.weather[0].description.toUpperCase();
-    temperatureDiv.innerHTML = weatherData.main.temp;
-    feelsLikeDiv.innerHTML = `Feels like: ${weatherData.main.feels_like} °C`;
+    temperatureDiv.innerHTML = temperatureRounded;
+    feelsLikeDiv.innerHTML = `Feels like: ${feelsLikeRounded} °C`;
     humidityDiv.innerHTML = `Humidity: ${weatherData.main.humidity} %`;
     cloudCoverDiv.innerHTML = `Cloud cover: ${weatherData.clouds.all} %`;
     windSpeedDiv.innerHTML = "Wind speed: " + weatherData.wind.speed + " km/h";
