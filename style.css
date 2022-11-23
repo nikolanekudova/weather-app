@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+h1 {
+    margin: 0;
+    font-size: 40px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+#page {
+    height: 100%;
+    background-image: url(./images/frog.jpg);
+    background-size: cover;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.65);
+}
+
+#content {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    color: rgb(221, 221, 221);
+    display: flex;
+    align-items: center;
+    padding-top: 13%;
+    padding-left: 15%;
+    font-size: 16px;
+}
+
+#current-weather-wrapper {
+    display: flex;
+    gap: 50px;
+}
+
+#temperature-wrapper {
+    display: flex;
+}
+
+#temperature {
+    font-size: 150px;
+    font-weight: 900;
+}
+
+#unit {
+    position: relative;
+    font-size: 25px;
+    font-weight: 900;
+    top: 15%;
+}
+
+#right-side {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#right-side-weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+#input-city {
+    padding: 4px 5px;
+    box-sizing: border-box;
+    background-color: rgb(237, 237, 237);
+    border: none;
+}
+
+#right-side {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+#submit-city {
+    background-color: rgb(221, 221, 221);
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    color: black;
+    font-weight: 500;
+}
+
+#submit-city:hover {
+    background-color: rgb(183, 183, 183);
+    cursor: pointer;
+}
+
+#icon-wrapper {
+    margin-left: -19px;
+}
+
+#error-div {
+    visibility: hidden;
+    font-size: 10px;
+    align-content: center;
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    color: #ddd;
+}
+
+#icon-location {
+    max-width: 25px;
+    filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(100deg)
+        brightness(100%) contrast(100%);
+}
+
+#icon-location:hover {
+    filter: invert(30%) sepia(200%) saturate(100%) hue-rotate(100deg)
+        brightness(100%) contrast(100%);
+    cursor: pointer;
+}
+
+#input-wrapper {
+    display: flex;
+    gap: 10px;
+}
+
+#input-button-wrapper {
+    gap: 10px;
+    display: flex;
+    height: 29px;
+}

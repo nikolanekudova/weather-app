@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./app.js" defer></script>
+    <title>Weather App by Nikca</title>
+</head>
+<body>
+    <div id="page">
+        <div id="content">
+            <div id="left-side">
+                <div id="icon-wrapper">
+                </div>
+                <div id="weather-wrapper">
+                    <h2 id="city"></h2>
+                    <h1 id="current-weather-text"></h1>
+                    <div id="current-weather-wrapper">
+                        <div id="temperature-wrapper">
+                            <div id="temperature"></div>
+                            <div id="unit">°C</div>
+                        </div>
+                        <div id="right-side-weather">
+                            <div id="feels-like"></div>
+                            <div id="humidity"></div>
+                            <div id="cloud-cover"></div>
+                            <div id="wind-speed"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="right-side">
+                <div id="input-wrapper">
+                    <div id="icon-wrapper">
+                        <img src="./icons/location.svg" id="icon-location">
+                    </div>
+                    <div id="input-button-wrapper">
+                        <input type="text" placeholder="Search your city" id="input-city">
+                        <button id="submit-city">Submit</button>
+                    </div>
+                </div>
+                <div id="error-div">City you entered could not be found!</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
