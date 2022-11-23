@@ -31,7 +31,7 @@ async function getWeatherAPI(url) {
 
 async function getPositionAPI(city) {
     const url =
-        "http://api.openweathermap.org/geo/1.0/direct?q=" +
+        "https://api.openweathermap.org/geo/1.0/direct?q=" +
         city +
         "&limit=1&appid=3a34280f1b1a64c644af7807824fed30";
 
@@ -54,7 +54,7 @@ async function getPositionAPI(city) {
 function positionOfCityIntoURL(positionData) {
     if (positionData.length == 0) {
         const errorDiv = document.getElementById("error-div");
-        
+
         errorDiv.style.display = "flex";
         errorDiv.style.visibility = "visible";
     }
@@ -189,7 +189,7 @@ function changeWeatherIcon(data) {
     const weatherData = data;
     const iconNumber = weatherData.weather[0].icon;
     const iconURL =
-        "http://openweathermap.org/img/wn/" + iconNumber + "@2x.png";
+        "https://openweathermap.org/img/wn/" + iconNumber + "@2x.png";
 
     const icon = document.createElement("img");
     icon.src = iconURL;
